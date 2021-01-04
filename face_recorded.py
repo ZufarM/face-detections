@@ -11,7 +11,7 @@ eye_cascade = cv2.CascadeClassifier('haarcascades/haarcascade_eye.xml')
 cap = cv2.VideoCapture(0)
 cap.set(3, 640) # lebar cam
 cap.set(4, 480) # tinggi cam
-3
+
 face_ID = input("Masukan NIM Mahasiswa yang akan direkam  [Kemudian tekan Enter]: ")
 print("Tatap wajah anda ke Webcam & Tunggu hingga proses pengambilan data wajah selesai...")
 
@@ -26,16 +26,16 @@ while 1:
     for (x, y, w, h) in faces:
         frame = cv2.rectangle(img, (x, y), (x + w, y + h), (0, 0, 255), 2)
 
-        nama_file = 'face.'+str(face_ID)+'.'+str(ambil_data)+'.jpg'
-        cv2.imwrite(wajah_dir+'/'+nama_file, frame)
-        ambil_data += 1
-
         roi_gray = gray[y:y + h, x:x + w]
         roi_color = img[y:y + h, x:x + w]
 
         eyes = eye_cascade.detectMultiScale(roi_gray)
         for (ex, ey, ew, eh) in eyes:
             cv2.rectangle(roi_color, (ex, ey), (ex + ew, ey + eh), (0, 255, 0), 2)
+
+            nama_file = 'face.'+str(face_ID)+'.'+str(ambil_data)+'.jpg'
+            cv2.imwrite(wajah_dir+'/'+nama_file, frame)
+            ambil_data += 1
 
     cv2.imshow('img', img)
 
