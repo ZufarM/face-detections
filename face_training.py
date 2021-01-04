@@ -32,4 +32,4 @@ faces, IDs = getImageLabel(wajah_dir)
 
 face_recognizer.train(faces, np.array(IDs))
 face_recognizer.write(latih_dir+'/training.xml')
-print('Sebanyak {0} data wajah telah ditrainingkan ke mesin.', format(len(np.unique(IDs))))
+print('Sebanyak '+format(len(np.unique(IDs)))+' data wajah telah ditrainingkan ke mesin.')

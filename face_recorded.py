@@ -38,11 +38,13 @@ while 1:
             cv2.rectangle(roi_color, (ex, ey), (ex + ew, ey + eh), (0, 255, 0), 2)
 
     cv2.imshow('img', img)
+
     k = cv2.waitKey(1) & 0xFF
     if k == 27 or k == ord('q'):
         break
     elif ambil_data > 30:
         break
+
 print("Pengambilan data selesai")
 cap.release()
 cv2.destroyAllWindows()
